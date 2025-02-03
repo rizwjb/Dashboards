@@ -63,6 +63,11 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .dashboard-card:hover img {
+      transform: scale(1.1);
     }
 
     .dashboard-card .content {
@@ -119,7 +124,7 @@
   <main>
     <div class="dashboard-grid">
       <div class="dashboard-card" onclick="openModal('dashboard1.jpg')">
-        <img src="riz.jpeg" alt="Sales Dashboard">
+        <img src="dashboard1_thumb.jpg" alt="Sales Dashboard">
         <div class="content">
           <h2>Sales Performance Dashboard</h2>
           <p>Visualizing monthly sales trends and revenue metrics.</p>
