@@ -1,29 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Profile Page</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Data Analyst Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .dashboard-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .dashboard-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .dashboard-card .content {
+      padding: 15px;
+    }
+
+    .dashboard-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .dashboard-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
   <header>
-    <h1>My Profile</h1>
-    <p>Welcome to my interactive profile page!</p>
+    <h1>Data Analyst Portfolio</h1>
+    <p>Showcasing Interactive Dashboards & Insights</p>
   </header>
 
   <main>
-    <div class="gallery">
-      <div class="image-container">
-        <img src="image1.jpg" alt="Image 1" class="gallery-image">
+    <div class="dashboard-grid">
+      <div class="dashboard-card" onclick="openModal('dashboard1.jpg')">
+        <img src="riz.jpeg" alt="Sales Dashboard">
+        <div class="content">
+          <h2>Sales Performance Dashboard</h2>
+          <p>Visualizing monthly sales trends and revenue metrics.</p>
+        </div>
       </div>
-      <div class="image-container">
-        <img src="image2.jpg" alt="Image 2" class="gallery-image">
+
+      <div class="dashboard-card" onclick="openModal('dashboard2.jpg')">
+        <img src="dashboard2_thumb.jpg" alt="Customer Insights">
+        <div class="content">
+          <h2>Customer Insights Dashboard</h2>
+          <p>Analyzing customer demographics and engagement patterns.</p>
+        </div>
       </div>
-      <div class="image-container">
-        <img src="image3.jpg" alt="Image 3" class="gallery-image">
+
+      <div class="dashboard-card" onclick="openModal('dashboard3.jpg')">
+        <img src="dashboard3_thumb.jpg" alt="Marketing Analysis">
+        <div class="content">
+          <h2>Marketing Campaign Analysis</h2>
+          <p>Evaluating campaign performance and ROI metrics.</p>
+        </div>
       </div>
-      <div class="image-container">
-        <img src="image4.jpg" alt="Image 4" class="gallery-image">
-      </div>
-      <!-- Add more images as needed 
+    </div>
+  </main>
+
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Enlarged Dashboard">
+  </div>
+
+  <script>
+    function openModal(imageSrc) {
+      document.getElementById('modalImage').src = imageSrc;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    window.addEventListener('click', function (e) {
+      const modal = document.getElementById('modal');
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+
+</html>
